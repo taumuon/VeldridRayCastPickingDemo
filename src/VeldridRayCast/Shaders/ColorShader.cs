@@ -53,13 +53,8 @@ namespace VeldridRayCast.Shaders
         [FragmentShader]
         public Vector4 FS(FragmentInput input)
         {
-            // TODO: pass via fragment input
-            Vector4 lightColor = new Vector4(1.0f, 1.0f, 1.0f, 0.0f);
-            float ambient = 0.2f;
-            float diffuse = 1.0f;
-            //Vector4 lightColor = new Vector4(DirectionalLight.Color, 1.0f);
-            //float ambient = DirectionalLight.AmbientIntensity;
-            //float diffuse = DirectionalLight.DiffuseIntensity;
+            float ambient = DirectionalLight.AmbientIntensity;
+            float diffuse = DirectionalLight.DiffuseIntensity;
 
             float shadowBias = 0.0005f;
 
@@ -76,7 +71,7 @@ namespace VeldridRayCast.Shaders
             float diffuseFactor = Vector3.Dot(normalVectorNormalized, lightDirectionNormalized);
             diffuseFactor = Clamp(diffuseFactor, 0.0f, 1.0f) * shadowFactor;
 
-            float brightness = Clamp(ambient + (diffuse * diffuseFactor), 0.0f, 1.0f);
+            Vector3 brightness = Clamp(new Vector3(ambient) + ((diffuse * diffuseFactor) * DirectionalLight.Color), new Vector3(0.0f), new Vector3(1.0f));
 
             return new Vector4(input.Color * brightness, 1.0f);
 

@@ -73,7 +73,7 @@ namespace VeldridRayCast
              lightDirection,
              new Vector3(1.0f, 1.0f, 1.0f),
              0.2f,
-             1.0f,
+             0.8f,
              shadowMatrix);
         }
 
@@ -155,7 +155,7 @@ namespace VeldridRayCast
                 new ResourceLayoutDescription(
                     new ResourceLayoutElementDescription("Projection", ResourceKind.UniformBuffer, ShaderStages.Vertex),
                     new ResourceLayoutElementDescription("View", ResourceKind.UniformBuffer, ShaderStages.Vertex),
-                    new ResourceLayoutElementDescription("DirectionalLight", ResourceKind.UniformBuffer, ShaderStages.Vertex),
+                    new ResourceLayoutElementDescription("DirectionalLight", ResourceKind.UniformBuffer, ShaderStages.Vertex | ShaderStages.Fragment),
                     new ResourceLayoutElementDescription("ShadowMap", ResourceKind.TextureReadOnly, ShaderStages.Fragment),
                     new ResourceLayoutElementDescription("ShadowMapSampler", ResourceKind.Sampler, ShaderStages.Fragment)
                     ));

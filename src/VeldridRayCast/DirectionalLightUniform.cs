@@ -12,9 +12,9 @@ namespace VeldridRayCast
 
         // Light direction world space
         public readonly Vector3 Direction;
-        //public float Padding1;
+        public float Padding1;
         public readonly Vector3 Color;
-        //public float Padding2;
+        public float Padding2;
 
         // TODO: the following are model properties, should
         //  be split into a separate uniform to pass per model
@@ -30,8 +30,8 @@ namespace VeldridRayCast
             DiffuseIntensity = diffuseIntensity;
             ShadowMatrix = shadowMatrix;
 
-            //Padding1 = 0.0f;
-            //Padding2 = 0.0f;
+            Padding1 = 0.0f;
+            Padding2 = 0.0f;
         }
     }
 }
